@@ -85,41 +85,6 @@ function performModifications() {
     }
 }
 
-
-function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-        const context = this;
-        const args = arguments;
-        if (!inThrottle) {
-            // Call the function immediately
-            func.apply(context, args);
-            inThrottle = true;
-            setTimeout(() => {
-                inThrottle = false;
-            }, limit);
-        }
-    };
-}
-
-// Throttle the MutationObserver to not run too frequently
-const throttledCallback = throttle(function (mutations) {
-    stopObserver();
-    performModifications();
-    startObserver();
-}, 650);
-
-// Create a MutationObserver to watch for changes in the DOM
-const observer = new MutationObserver(throttledCallback);
-
-function stopObserver() {
-    observer.disconnect();
-}
-function startObserver() {
-    // Define the type of mutations to observe (childList for added/removed nodes) then start observing the target node for configured mutations
-    observer.observe(document.body, { childList: false, subtree: true, attributes: true});
-}
-
 if (getSettings()) {
-    startObserver();
+    setInterval(performModifications, 500);
 }
