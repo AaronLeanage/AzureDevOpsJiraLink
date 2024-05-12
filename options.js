@@ -1,12 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
     var saveButton = document.getElementById('saveButton');
+	var outputTextLabel = document.getElementById('outputText');
+	var msgCounter = 1;
 
     saveButton.addEventListener('click', function() {
         var issuekey = document.getElementById('issuekey').value;
         var jiraurl = document.getElementById('jiraurl').value;
 
         if (!issuekey || !jiraurl) {
-            alert("Both fields are required!");
+			if (outputTextLabel.style["color"] !== 'red') {
+				msgCounter = 1;
+				outputTextLabel.style["color"] = 'red';
+				outputTextLabel.innerHTML = "Both fields are required!";
+			}
+            else {
+				msgCounter++;
+				outputTextLabel.innerHTML = `Both fields are required! (${msgCounter})`;
+			}
             return;
         }
 
@@ -14,7 +24,15 @@ document.addEventListener('DOMContentLoaded', function() {
             issuekey: issuekey,
             jiraurl: jiraurl
         }, function() {
-            alert("Settings saved!");
+			if (outputTextLabel.style["color"] !== 'green') {
+				msgCounter = 1;
+				outputTextLabel.style["color"] = 'green';
+				outputTextLabel.innerHTML = "Settings Saved!";
+			}
+            else {
+				msgCounter++;
+				outputTextLabel.innerHTML = `Settings Saved! (${msgCounter})`;
+			}
         });
     });
 
