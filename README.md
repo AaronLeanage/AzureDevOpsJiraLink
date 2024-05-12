@@ -5,6 +5,6 @@ This extension will only activate on the PR list and PR detail pages on Azure De
 
 ## Usage
 
-Install the extension from the Chrome Web Store or build from source and load in your browser.
+Install the extension from the Chrome Web Store or load from source in your browser.
 
-Navigate to the extension options and fill in your Jira host URL and Issue Key to scan for. 
+Navigate to the extension options and fill in your Jira host URL and Issue Key to scan for.
