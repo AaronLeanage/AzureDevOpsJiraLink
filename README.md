@@ -10,3 +10,9 @@ This extension will only activate on the PR list and PR detail pages on Azure De
 Install the extension from the Chrome Web Store or load from source in your browser.
 
 Navigate to the extension options and fill in your Jira host URL and Issue Key to scan for.
+
+## Screenshots
+
+PR List            |  PR details
+:-------------------------:|:-------------------------:
+![Screenshot0](screenshot_0.png)  |  ![Screenshot1](screenshot_1.png)
